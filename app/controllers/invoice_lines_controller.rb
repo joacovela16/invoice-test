@@ -84,11 +84,12 @@ class InvoiceLinesController < ApplicationController
 
     def set_header
       tmp = invoice_line_params
-      @invoice_header = InvoiceHeader.find(1)
+      puts tmp[:invoice_header_id].to_i
+      @invoice_header = InvoiceHeader.find(tmp[:invoice_header_id].to_i)
     end
 
     # Only allow a list of trusted parameters through.
     def invoice_line_params
-      params.require(:invoice_line).permit(:invoice_line, :description, :invoice_header,:commit, :product_name, :quantity, :price, :invoice_header)
+      params.require(:invoice_line).permit(:invoice_line, :description, :invoice_header, :invoice_header_id,:commit, :product_name, :quantity, :price, :invoice_header)
     end
 end

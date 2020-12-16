@@ -16,14 +16,18 @@
  */
      
 
+@import variables
 @import ../flatly/bulmaswatch
 @import ../bulma
 
 .screen-ext
     overflow: hidden
-    width: 100%
-    height: 100%
+    width: $screenProps
+    height: $screenProps
 
 .body-ext
-    box-shadow: 0 0 30px rgba(0,0,0,0.3) inset
+    box-shadow: 0 0 30px $shadowColor inset
     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAGElEQVQImWP4+vXr/69fv/5nQAZYBSkDAHCoD3nUL8+vAAAAAElFTkSuQmCC) repeat
+
+.has-cursor
+    cursor: pointer

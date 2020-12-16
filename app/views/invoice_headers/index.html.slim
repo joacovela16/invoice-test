@@ -10,7 +10,9 @@ section.section
         div.level-item
           div.dropdown.is-hoverable.is-right
             div.dropdown-trigger
-              div.button.is-dark  Tools
+              div.button.is-dark  
+                span.mx-2 = fa_icon "th-list"
+                span Menu 
             div.dropdown-menu
               div.dropdown-content
                 = link_to 'New Invoice Header', new_invoice_header_path, class: 'dropdown-item'
@@ -34,16 +36,18 @@ section.section
           tr
             td = invoice_header.id
             td = invoice_header.client_name
-            / td = invoice_header.phone
-            / td = invoice_header.email
-            / td = invoice_header.address
             td = invoice_header.creation_date
             td = invoice_header.modification_date
             td = invoice_header.rate
             td = invoice_header.total
             td colspan=3
-              span.px-1 = link_to "Download PDF", invoice_path(invoice_header, format: :pdf)
-              span.px-1 = link_to  "Show", invoice_header 
-              span.px-1 = link_to  "Edit", edit_invoice_header_path(invoice_header)
-              span.px-1 = link_to  "Destroy", invoice_header, method: :delete, data: { confirm: 'Are you sure?' } 
+              div.dropdown.is-hoverable.is-right
+                div.dropdown-trigger.has-cursor
+                  span = fa_icon "list"
+                div.dropdown-menu
+                  div.dropdown-content
+                    = link_to "Download PDF", invoice_path(invoice_header, format: :pdf), class: 'dropdown-item'
+                    = link_to  "Show", invoice_header , class: 'dropdown-item'
+                    = link_to  "Edit", edit_invoice_header_path(invoice_header), class: 'dropdown-item'
+                    = link_to  "Destroy", invoice_header, method: :delete, data: { confirm: 'Are you sure?' } , class: 'dropdown-item'
 

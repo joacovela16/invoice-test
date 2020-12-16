@@ -5,7 +5,7 @@ class CreateInvoiceLines < ActiveRecord::Migration[5.2]
       t.date :creation_date
       t.date :modification_date
       t.string :product_name, null: false
-      t.float :quantity, default: 0
+      t.float :quantity, default: 1
       t.float :price, null:false, default: 0
       t.float :total, default: 0
       t.text :description, default: ""
