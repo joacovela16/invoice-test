@@ -1,0 +1,50 @@
+p
+  = notice
+
+section.section
+  div.container
+    div.level
+      div.level-left
+        div.level-item
+          div.title.is-size-5 Showing Invoice Header
+      div.level-right
+    div.columns
+      div.column.is-6.is-offset-3
+        div.card
+            header.card-header
+                p.card-header-title = @invoice_header.client_name
+            div.card-content
+                div.content
+                    table
+                        tbody
+                            tr
+                                td  Last name
+                                td = @invoice_header.client_last_name
+                            tr
+                                td  Client DI
+                                td = @invoice_header.doc_id
+                            
+                            tr
+                                td  Phone
+                                td = @invoice_header.phone
+                            tr
+                                td  Email
+                                td = @invoice_header.email
+                            tr
+                                td  Address
+                                td = @invoice_header.address
+                            tr
+                                td  Creation Date
+                                td = @invoice_header.creation_date
+                            tr
+                                td  Modification Date
+                                td = @invoice_header.modification_date
+                            tr
+                                td  Rate
+                                td = @invoice_header.rate
+                            tr
+                                td  Total
+                                td = @invoice_header.total
+            footer.card-footer
+                a.card-footer-item href=invoice_headers_path Back
+                a.card-footer-item href=edit_invoice_header_path(@invoice_header) Edit

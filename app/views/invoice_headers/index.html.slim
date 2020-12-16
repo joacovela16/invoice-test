@@ -1,0 +1,49 @@
+p
+  = notice
+section.section
+  div.container
+    div.level
+      div.level-left
+        div.level-item
+          div.title.is-size-4 Invoice Headers
+      div.level-left
+        div.level-item
+          div.dropdown.is-hoverable.is-right
+            div.dropdown-trigger
+              div.button.is-dark  Tools
+            div.dropdown-menu
+              div.dropdown-content
+                = link_to 'New Invoice Header', new_invoice_header_path, class: 'dropdown-item'
+                = link_to 'Invoice Lines', invoice_lines_path, class: 'dropdown-item'
+
+    table.table.is-stripped.is-fullwidth
+      thead
+        tr
+          th Nr
+          th Client
+          / th Phone
+          / th Email
+          / th Address
+          th C. Date
+          th M. Date
+          th Rate
+          th Total
+          th colspan=3
+      tbody
+        - @invoice_headers.each do |invoice_header|
+          tr
+            td = invoice_header.id
+            td = invoice_header.client_name
+            / td = invoice_header.phone
+            / td = invoice_header.email
+            / td = invoice_header.address
+            td = invoice_header.creation_date
+            td = invoice_header.modification_date
+            td = invoice_header.rate
+            td = invoice_header.total
+            td colspan=3
+              span.px-1 = link_to "Download PDF", invoice_path(invoice_header, format: :pdf)
+              span.px-1 = link_to  "Show", invoice_header 
+              span.px-1 = link_to  "Edit", edit_invoice_header_path(invoice_header)
+              span.px-1 = link_to  "Destroy", invoice_header, method: :delete, data: { confirm: 'Are you sure?' } 
+

@@ -1,0 +1,39 @@
+p
+  = notice
+
+section.section
+  div.container
+    div.level
+      div.level-left
+        div.level-item
+          div.title.is-size-5 Showing Invoice Line
+      div.level-right
+    div.columns
+      div.column.is-6.is-offset-3
+        div.card
+            header.card-header
+                p.card-header-title = @invoice_line.product_name
+            div.card-content
+                div.content
+                    table
+                        tbody
+                            tr
+                                td  Creation Date
+                                td = @invoice_line.creation_date
+                            tr
+                                td  Modification Date
+                                td = @invoice_line.modification_date
+                            tr
+                                td  quantity
+                                td = @invoice_line.quantity
+                            tr
+                                td  Price
+                                td = @invoice_line.price
+                            tr
+                                td  Total
+                                td = @invoice_line.total
+                            tr
+                                td colspan="2" = @invoice_line.description
+            footer.card-footer
+                a.card-footer-item href=invoice_lines_path Back
+                a.card-footer-item href=edit_invoice_line_path(@invoice_line) Edit

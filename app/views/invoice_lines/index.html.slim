@@ -1,0 +1,44 @@
+p
+  = notice
+section.section
+  div.container
+    div.level
+      div.level-left
+        div.level-item
+          div.title.is-size-4 Invoice Lines
+      div.level-left
+        div.level-item
+          div.dropdown.is-hoverable.is-right
+            div.dropdown-trigger
+              div.button.is-dark  Tools
+            div.dropdown-menu
+              div.dropdown-content
+                = link_to 'Home', invoice_headers_path, class: 'dropdown-item'
+                = link_to 'New Invoice Line', new_invoice_line_path, class: 'dropdown-item'
+
+    table.table.is-stripped.is-fullwidth
+      thead
+        tr
+          th Prod. Name
+          th Inv. Header
+          th C. Date
+          th M. Date
+          th.has-text-right Quantity
+          th.has-text-right Price
+          th.has-text-right Total
+          th colspan=3
+      tbody
+        - @invoice_lines.each do |invoice_lines|
+          tr
+            td = invoice_lines.product_name
+            td = invoice_lines.invoice_header_id.to_s
+            td = invoice_lines.creation_date
+            td = invoice_lines.modification_date
+            td.has-text-right = invoice_lines.quantity
+            td.has-text-right = invoice_lines.price
+            td.has-text-right = invoice_lines.total
+            td 
+              span.px-1 = link_to  "Show", invoice_lines 
+              span.px-1 = link_to  "Edit", edit_invoice_line_path(invoice_lines)
+              span.px-1 = link_to  "Destroy", invoice_lines, method: :delete, data: { confirm: 'Are you sure?' } 
+

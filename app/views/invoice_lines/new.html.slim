@@ -1,0 +1,14 @@
+section.section
+  div.container
+    div.level
+      div.level-left
+        div.level-item
+          div.title.is-size-5 New Invoice Line 
+      div.level-right
+        div.level-item = link_to 'Back' ,invoice_lines_path , class: 'button is-link'
+    div.columns
+      div.column.is-6.is-offset-3.box
+        == render 'form' 
+
+
+    

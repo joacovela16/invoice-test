@@ -1,0 +1,12 @@
+section.section
+  div.container
+    div.level
+      div.level-left
+        div.level-item
+          div.title.is-size-5 Editing Invoice Header
+      div.level-right
+        div.level-item = link_to 'Back' ,invoice_headers_path , class: 'button is-link'
+        div.level-item = link_to 'Show' ,@invoice_header , class: 'button is-primary'
+    div.columns
+      div.column.is-6.is-offset-3.box
+        == render 'form'

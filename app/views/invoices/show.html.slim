@@ -1,0 +1,52 @@
+div.columns
+    div.column.is-narrow
+        = wicked_pdf_image_tag "logo.png",:width => "90", :height=>"85"
+    div.column.is-narrow
+        p.title.is-3 Invoice resume
+        p.subtitle.is-4
+            span Client 
+            span.px-2 = @invoice.client_name 
+            span.px-2 = @invoice.client_last_name
+            span.px-2 = @invoice.doc_id  
+
+hr
+
+p.title.is-5 Contact
+p.my-0 = @invoice.phone
+p.my-0 = @invoice.email
+p.my-0 = @invoice.address
+
+p.title.is-6 Products
+
+table.table-ext
+    thead
+        tr
+            th.has-text-left Product name
+            th.has-text-left C.Date
+            th.has-text-left M.Date
+            th.has-text-right Quantity
+            th.has-text-right Price
+            th.has-text-right Subtotal
+
+    tbody
+        -@items.each do |item|
+            tr
+                td = item.product_name
+                td = item.creation_date
+                td = item.modification_date
+                td.has-text-right = item.quantity
+                td.has-text-right = item.price
+                td.has-text-right = item.total
+    tfoot
+        tr
+            td colspan="3"
+                span.px-2 Rate
+                span = @invoice.rate
+            td colspan="3"
+                span.px-2 Total
+                span = @invoice.total
+
+
+span Total = @invoice.total
+
+

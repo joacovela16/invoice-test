@@ -1,0 +1,40 @@
+
+= form_for(@invoice_header) do |f|
+  - if @invoice_header.errors.any?
+    div#error_explanation
+      h2 = pluralize(@invoice_header.errors.count, "error") 
+        prohibited this invoice header from being saved:
+      ul
+      - @invoice_header.errors.full_messages.each do |message|
+        li = message 
+  div.field
+    label.label = f.label :client_name
+    div.control
+      = f.text_field :client_name, class: 'input'
+  div.field
+    label.label = f.label :client_last_name
+    div.control
+      = f.text_field :client_last_name, class: 'input'
+  div.field
+    label.label = f.label :doc_id
+    div.control
+      = f.text_field :doc_id, class: 'input'
+  hr
+  div.field
+    label.label = f.label :email
+    div.control
+      = f.email_field :email, class: 'input'
+  div.field
+    label.label = f.label :phone
+    div.control
+      = f.text_field :phone, class: 'input'
+  div.field
+    label.label = f.label :address
+    div.control
+      = f.text_field :address, class: 'input'
+  hr
+  div.field
+    label.label = f.label :rate
+    div.control
+      = f.number_field :rate, class: 'input', value: '0'
+  = f.submit "Create", class: 'button is-primary'
